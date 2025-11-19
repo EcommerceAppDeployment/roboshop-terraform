@@ -27,16 +27,15 @@ resource "aws_route53_record" "private_record" {
 }
 
 # Create a null resource to trigger the ansible configuration
-resource "null_resource" "cluster" {
+resource "null_resource" "ansible" {
   depends_on = [aws_route53_record.public_record, aws_route53_record.private_record ]
-  connection {
-    type        = "ssh"
-    user        = "ec2-user" 
-    password    = "DevOps321"
-    host        = aws_instance.my_ec2_instance.private_ip
-  }
-
   provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "ec2-user" 
+      password    = "DevOps321"
+      host        = aws_instance.my_ec2_instance.private_ip
+    }
     inline = [
       "ansible-pull -i localhost, -U https://github.com/EcommerceAppDeployment/roboshop-ansible playbook.yml -e role_name=${var.name} -e env=${var.env} "
     ]
