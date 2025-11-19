@@ -3,6 +3,6 @@ module "ec2" {
     for_each        = var.instances
     ami             = var.ami
     zone_id         = var.zone_id
-    Name            = each.key
-    instance_type   = each.key["instance_type"]
+    name            = each.key
+    instance_type   = each.value["instance_type"]
 }
