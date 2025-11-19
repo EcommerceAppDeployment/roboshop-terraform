@@ -2,7 +2,8 @@
 resource "aws_instance" "my_ec2_instance" {
     ami                   = var.ami
     instance_type         = var.instance_type
-    iam_instance_profile  = aws_iam_instance_profile.main.name               
+    iam_instance_profile  = aws_iam_instance_profile.main.name
+     vpc_security_group_ids = [data.aws_security_group.allow-all.id]               
     tags                  = {
       Name = local.tagName
     }
@@ -37,6 +38,7 @@ resource "null_resource" "ansible" {
       host        = aws_instance.my_ec2_instance.private_ip
     }
     inline = [
+      "sudo pip3.11 install ansible"
       "ansible-pull -i localhost, -U https://github.com/EcommerceAppDeployment/roboshop-ansible playbook.yml -e role_name=${var.name} -e env=${var.env} "
     ]
   }
