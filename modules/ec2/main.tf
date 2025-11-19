@@ -31,7 +31,7 @@ resource "null_resource" "cluster" {
   depends_on = [aws_route53_record.public_record, aws_route53_record.private_record ]
   connection {
     type        = "ssh"
-    user        = "ec2-user" # Or appropriate user for your AMI
+    user        = "ec2-user" 
     password    = "DevOps321"
     host        = element(aws_instance.my_ec2_instance.private_ip, 0)
   }
