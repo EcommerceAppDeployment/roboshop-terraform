@@ -33,7 +33,7 @@ resource "null_resource" "cluster" {
     type        = "ssh"
     user        = "ec2-user" 
     password    = "DevOps321"
-    host        = element(aws_instance.my_ec2_instance.private_ip, 0)
+    host        = aws_instance.my_ec2_instance.private_ip
   }
 
   provisioner "remote-exec" {
