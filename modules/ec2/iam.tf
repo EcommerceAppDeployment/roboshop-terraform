@@ -35,7 +35,7 @@ resource "aws_iam_role_policy_attachment" "inspector-scanning-attachment" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
-resource "aws_iam_instance_profile" "ec2_profile" {
+resource "aws_iam_instance_profile" "main" {
   name = "${var.name}-ec2-role"
   role = aws_iam_role.main.name
 }

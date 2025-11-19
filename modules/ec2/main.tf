@@ -2,7 +2,7 @@
 resource "aws_instance" "my_ec2_instance" {
     ami                   = var.ami
     instance_type         = var.instance_type
-    iam_instance_profile  = aws_iam_instance_profile.ec2_profile.name               
+    iam_instance_profile  = aws_iam_instance_profile.main.name               
     tags                  = {
       Name = local.tagName
     }
