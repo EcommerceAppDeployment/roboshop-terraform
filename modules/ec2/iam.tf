@@ -5,7 +5,7 @@ resource "aws_iam_role" "main" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = local.iam_policy
+        Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
           Service = "ec2.amazonaws.com"
@@ -13,6 +13,20 @@ resource "aws_iam_role" "main" {
       },
     ]
   })
+  inline_policy {
+    name = "inline"
+
+    policy = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
+        {
+          Action   = local.iam_policy
+          Effect   = "Allow"
+          Resource = "*"
+        },
+      ]
+    })
+  }
 
 }
 
