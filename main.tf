@@ -5,4 +5,5 @@ module "ec2" {
     zone_id         = var.zone_id
     name            = each.key
     instance_type   = each.value["instance_type"]
+    env             = var.env
 }
