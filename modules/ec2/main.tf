@@ -38,7 +38,7 @@ resource "null_resource" "ansible" {
       host        = aws_instance.my_ec2_instance.private_ip
     }
     inline = [
-      "sudo pip3.11 install ansible"
+      "sudo pip3.11 install ansible",
       "ansible-pull -i localhost, -U https://github.com/EcommerceAppDeployment/roboshop-ansible playbook.yml -e role_name=${var.name} -e env=${var.env} "
     ]
   }
