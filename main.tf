@@ -6,4 +6,5 @@ module "ec2" {
     name            = each.key
     instance_type   = each.value["instance_type"]
     env             = var.env
+    iam_policy      = []
 }
