@@ -6,7 +6,7 @@ instances   = {
     frontend = {
         instance_type = "t2.micro"
     }
-    dipatch = {
+    dispatch = {
         instance_type = "t2.micro"
     }
     cart = {
