@@ -36,4 +36,4 @@ tools-infra:
 	git pull
 	cd tools
 	terraform init -backend-config=./environments/tools/state.tfvars
-	terraform plan -auto-approve -var-file=../environments/tools/main.tfvars
+	terraform apply -auto-approve -var-file=../environments/tools/main.tfvars
