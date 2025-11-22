@@ -35,6 +35,4 @@ prod-destroy: prod-init
 tools-infra:
 	git pull
 	rm -f .terraform/terraform.tfstate
-	cd tools && \ 
-	terraform init -backend-config=./environments/tools/state.tfvars && \
-	terraform apply -auto-approve -var-file="../environments/tools/main.tfvars"
+	cd tools; terraform init -backend-config=./environments/tools/state.tfvars ; terraform apply -auto-approve -var-file="../environments/tools/main.tfvars"
