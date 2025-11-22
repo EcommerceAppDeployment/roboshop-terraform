@@ -1,6 +1,6 @@
 variable "tools" {}
 variable "env" {
-    default = null
+    default = "tool"
 }
 variable "ami" {}
 variable "zone_id" {}
