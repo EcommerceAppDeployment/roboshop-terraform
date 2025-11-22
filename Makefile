@@ -37,5 +37,5 @@ tools-infra:
 	rm -f .terraform/terraform.tfstate
 	cd tools
 	terraform init -backend-config=./environments/tools/state.tfvars
-	ls ../environments/tools
-	terraform apply -auto-approve -var-file=../environments/tools/main.tfvars
+	pwd
+	# terraform apply -auto-approve -var-file=../environments/tools/main.tfvars
