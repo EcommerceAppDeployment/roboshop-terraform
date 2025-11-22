@@ -1,3 +1,3 @@
 bucket = "sri-terraform-bucket" 
-key    = "roboshop-terraform/dev/terraform.tfstate"
+key    = "tools/terraform.tfstate"
 region = "us-east-1"
