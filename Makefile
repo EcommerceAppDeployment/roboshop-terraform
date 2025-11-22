@@ -33,6 +33,7 @@ prod-destroy: prod-init
 	terraform destroy -auto-approve -var-file=./environments/prod/main.tfvars
 
 tools-infra:
+	git pull
 	cd tools
 	terraform init -backend-config=./environments/tools/state.tfvars
 	terraform plan -auto-approve -var-file=../environments/tools/main.tfvars
