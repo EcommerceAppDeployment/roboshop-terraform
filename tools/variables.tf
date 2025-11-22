@@ -1,8 +1,4 @@
-variable "tools" {
-    vault = {
-        instance_type = "t2.micro"
-    }
-}
+variable "tools" {}
 variable "env" {
     default = null
 }
