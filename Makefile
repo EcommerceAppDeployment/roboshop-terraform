@@ -34,5 +34,5 @@ prod-destroy: prod-init
 
 tools-infra:
 	cd tools
-	terraform init 
+	terraform init -backend-config=./environments/tools/state.tfvars
 	terraform plan -auto-approve -var-file=../environments/tools/main.tfvars
