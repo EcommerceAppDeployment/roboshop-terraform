@@ -5,15 +5,15 @@ dev-init:
 
 dev-plan:
 	terraform init 
-	terraform plan -var-file=./environments/dev/main.tfvars
+	terraform plan -var-file=./environments/dev/main.tfvars -var token=$(token)
 
 dev-apply: dev-init
 	terraform init												
-	terraform apply -auto-approve -var-file=./environments/dev/main.tfvars
+	terraform apply -auto-approve -var-file=./environments/dev/main.tfvars -var token=$(token)
 
 dev-destroy: dev-init
 	terraform init												
-	terraform destroy -auto-approve -var-file=./environments/dev/main.tfvars
+	terraform destroy -auto-approve -var-file=./environments/dev/main.tfvars -var token=$(token)
 
 prod-init:
 	git pull
@@ -22,16 +22,16 @@ prod-init:
 
 prod-plan:
 	terraform init 
-	terraform plan -var-file=./environments/prod/main.tfvars
+	terraform plan -var-file=./environments/prod/main.tfvars -var token=$(token)
 
 prod-apply: prod-init
 	terraform init												
-	terraform apply -auto-approve -var-file=./environments/prod/main.tfvars
+	terraform apply -auto-approve -var-file=./environments/prod/main.tfvars -var token=$(token)
 
 prod-destroy: prod-init
 	terraform init												
-	terraform destroy -auto-approve -var-file=./environments/prod/main.tfvars
+	terraform destroy -auto-approve -var-file=./environments/prod/main.tfvars -var token=$(token)
 
 tools-infra:
 	git pull
-	cd tools; rm -f .terraform/terraform.tfstate; terraform init ; terraform apply -auto-approve -var-file="../environments/tools/main.tfvars"
+	cd tools; rm -f .terraform/terraform.tfstate; terraform init ; terraform apply -auto-approve -var-file="../environments/tools/main.tfvars" -var token=$(token)
