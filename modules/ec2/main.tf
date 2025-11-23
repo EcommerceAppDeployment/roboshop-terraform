@@ -36,8 +36,8 @@ resource "null_resource" "ansible" {
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
-      user        = "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/ec2:USER token={{token}} url=https://vault_p-internal.sdevops.shop:8200') }}" 
-      password    = "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/ec2:PASSWORD token={{token}} url=https://vault_p-internal.sdevops.shop:8200') }}"
+      user        = "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/ec2:USER token={{token}} url=https://vault_p-internal.sdevops.shop:8200 validate_certs=false') }}" 
+      password    = "{{ lookup('community.hashi_vault.hashi_vault', 'secret=roboshop-infra/data/ec2:PASSWORD token={{token}} url=https://vault_p-internal.sdevops.shop:8200 validate_certs=false') }}"
       host        = aws_instance.my_ec2_instance.private_ip
     }
     inline = [
