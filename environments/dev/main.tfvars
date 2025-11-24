@@ -1,5 +1,5 @@
 env         = "dev"
-ami         = "ami-09c813fb71547fc4f"
+ami         = "ami-00b4d312883eab224"
 zone_id     = "Z08786032W2NWXT9UW4JD"
 #zone_name   = "sdevops.shop"
 instances   = {
