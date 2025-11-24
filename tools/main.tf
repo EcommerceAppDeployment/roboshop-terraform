@@ -7,5 +7,6 @@ module "tools" {
     instance_type   = each.value["instance_type"]
     env             = var.env
     iam_policy      = []
+    token           = var.token
 }
 
