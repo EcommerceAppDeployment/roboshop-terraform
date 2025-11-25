@@ -3,7 +3,11 @@ resource "aws_instance" "my_ec2_instance" {
     ami                   = var.ami
     instance_type         = var.instance_type
     iam_instance_profile  = aws_iam_instance_profile.main.name
-     vpc_security_group_ids = [data.aws_security_group.allow-all.id]               
+    vpc_security_group_ids = [data.aws_security_group.allow-all.id]
+    root_block_device {
+      volume_size = 40   
+      volume_type = "gp3"
+    }               
     tags                  = {
       Name = local.tagName
     }
