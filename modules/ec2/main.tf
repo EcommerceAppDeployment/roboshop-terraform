@@ -5,7 +5,7 @@ resource "aws_instance" "my_ec2_instance" {
     iam_instance_profile  = aws_iam_instance_profile.main.name
     vpc_security_group_ids = [data.aws_security_group.allow-all.id]
     root_block_device {
-      volume_size = 40   
+      volume_size = var.volume_size   
       volume_type = "gp3"
     }               
     tags                  = {
