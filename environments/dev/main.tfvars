@@ -17,7 +17,7 @@ instances   = {
     }
     catalogue = {
         instance_type = "t2.micro"
-        volume_size   = 80
+        volume_size   = 40
     }
     mongodb = {
         instance_type = "t2.micro"
@@ -41,7 +41,7 @@ instances   = {
     }
     shipping = {
         instance_type = "t2.micro"
-        volume_size   = 80
+        volume_size   = 40
     }
     user = {
         instance_type = "t2.micro"
