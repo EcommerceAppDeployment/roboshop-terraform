@@ -1,7 +1,7 @@
 resource "aws_eks_cluster" "main" {
-  name = "main"
-  role_arn = aws_iam_role.cluster.arn
-  version  = "1.31"
+  name      = var.env
+  role_arn  = aws_iam_role.cluster.arn
+  version   = "1.31"
 
   vpc_config {
     subnet_ids = [ subnet-0117cdfaf46842167, subnet-0b0561e5654e35569, subnet-0b5abd68e3e0182a1 ]
@@ -35,4 +35,8 @@ resource "aws_eks_node_group" "node_main" {
     aws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly,
   ]
+}
+resource "aws_eks_addon" "vpc_cni" {
+  cluster_name = aws_eks_cluster.main.name
+  addon_name   = "vpc-cni"
 }
