@@ -34,7 +34,7 @@ resource "aws_eks_node_group" "node_main" {
   depends_on = [
     aws_iam_role_policy_attachment.node_AmazonEKSWorkerNodeMinimalPolicy,
     aws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryPullOnly
   ]
 }
 resource "aws_eks_addon" "vpc_cni" {
