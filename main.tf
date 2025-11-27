@@ -1,6 +1,6 @@
 #module "ec2" {
 #   source          = "./modules/ec2"
-#   for_each        = var.instances
+#   for_each        = var.databases
 #   ami             = var.ami
 #   zone_id         = var.zone_id
 #   name            = each.key
@@ -13,5 +13,8 @@
 
 module "eks" {
     source          = "./modules/eks"
-    env             = var.env
+    for_each        = var.eks
+    env             = each.value["env"]
+    subnet_ids      = each.value["subnet_ids"]
+    node_groups     = each.value["node_groups"]
 }
