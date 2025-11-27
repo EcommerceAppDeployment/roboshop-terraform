@@ -24,11 +24,11 @@ databases   = {
 eks = {
     main ={
         env = "dev"
-        subnet_ids = [ subnet-0117cdfaf46842167, subnet-0b0561e5654e35569, subnet-0b5abd68e3e0182a1 ]
+        subnet_ids = [ "subnet-0117cdfaf46842167", "subnet-0b0561e5654e35569", "subnet-0b5abd68e3e0182a1" ]
         node_groups = {
             one = {
-               min_size = 1
-               max_size = 2 
+               "min_size" = 1
+               "max_size" = 2 
             }
         }
     }

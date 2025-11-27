@@ -20,3 +20,4 @@ databases   = {
         volume_size   = 20
     }
 }
+eks = {}
