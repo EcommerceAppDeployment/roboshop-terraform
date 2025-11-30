@@ -1,0 +1,19 @@
+name: Apply
+on:
+  push:
+    branches:
+      - main # Triggers on pushes to the 'main' branch
+  workflow_dispatch: # triggers manual workflow
+jobs:
+  build:
+    runs-on: self-hosted # Specifies the runner environment
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Checks out the repository code
+
+      - name: build
+        run: echo 'building workflow' # Example: Install Node.js dependencies
+
+      - name: Run tests
+        run: echo 'running tests' # Example: Run tests
