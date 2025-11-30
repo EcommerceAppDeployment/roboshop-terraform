@@ -46,7 +46,7 @@ resource "null_resource" "ansible_tool" {
       host        = aws_instance.my_ec2_instance.private_ip
     }
     inline = [
-      "sudo pip install hvac"
+      "sudo pip install hvac",
       "ansible-pull -i localhost, -U https://github.com/EcommerceAppDeployment/roboshop-ansible playbook.yml -e role=${var.name} -e env=${var.env} -e token=${var.token} | sudo tee /opt/ansible.log"
     ]
   }
