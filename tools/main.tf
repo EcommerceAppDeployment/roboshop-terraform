@@ -7,7 +7,7 @@ module "tools" {
     instance_type   = each.value["instance_type"]
     volume_size     = each.value["volume_size"]
     env             = var.env
-    iam_policy      = try(each.value["iam_policy"])
+    iam_policy      = each.value["iam_policy"]
     token           = var.token
 }
 
