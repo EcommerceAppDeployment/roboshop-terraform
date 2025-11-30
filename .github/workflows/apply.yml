@@ -5,7 +5,7 @@ on:
   #   - main # Triggers on pushes to the 'main' branch
   workflow_dispatch: # triggers manual workflow
 jobs:
-  build:
+  apply:
     runs-on: self-hosted # Specifies the runner environment
 
     steps:
