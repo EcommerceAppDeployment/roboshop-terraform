@@ -15,7 +15,7 @@ jobs:
       - name: terraform apply
         env:
           VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
-        run: make dev-plan token=$VAULT_TOKEN
+        run: make dev-apply token=$VAULT_TOKEN
           # Example: Install Node.js dependencies
 
       - name: Run tests
