@@ -12,8 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 # Checks out the repository code
 
-      - name: build
-        run: echo 'building workflow' # Example: Install Node.js dependencies
+      - name: terraform apply
+        env:
+          VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
+        run: dev-plan token=$VAULT_TOKEN
+          # Example: Install Node.js dependencies
 
       - name: Run tests
         run: echo 'running tests' # Example: Run tests
