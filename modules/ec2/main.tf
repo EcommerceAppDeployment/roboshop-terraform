@@ -31,9 +31,31 @@ resource "aws_route53_record" "private_record" {
   records = [aws_instance.my_ec2_instance.private_ip]
 }
 
-# Create a null resource to trigger the ansible configuration
+# Create a null resource to trigger the ansible configuration for tools only
 resource "null_resource" "ansible" {
-  depends_on = [aws_route53_record.public_record, aws_route53_record.private_record ]
+  depends_on  = [aws_route53_record.public_record, aws_route53_record.private_record ]
+  count       = var.env=="tool" ? 1 : 0
+  triggers = {
+    always_run = timestamp()
+  }
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = data.vault_generic_secret.ssh-creds.data["USER"]
+      password    = data.vault_generic_secret.ssh-creds.data["PASSWORD"]
+      host        = aws_instance.my_ec2_instance.private_ip
+    }
+    inline = [
+      "sudo pip install hvac"
+      "ansible-pull -i localhost, -U https://github.com/EcommerceAppDeployment/roboshop-ansible playbook.yml -e role=${var.name} -e env=${var.env} -e token=${var.token} | sudo tee /opt/ansible.log"
+    ]
+  }
+}
+
+# Create a null resource to trigger the ansible configuration for databases
+resource "null_resource" "ansible" {
+  depends_on  = [aws_route53_record.public_record, aws_route53_record.private_record ]
+  count       = var.env=="tool" ? 0 : 1
   triggers = {
     always_run = timestamp()
   }
