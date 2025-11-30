@@ -3,7 +3,7 @@ dev-init:
 	rm -f .terraform/terraform.tfstate
 	terraform init -backend-config=./environments/dev/state.tfvars
 
-dev-plan:
+dev-plan: dev-init
 	terraform init 
 	terraform plan -var-file=./environments/dev/main.tfvars -var token=$(token)
 
@@ -20,7 +20,7 @@ prod-init:
 	rm -f .terraform/terraform.tfstate
 	terraform init -backend-config=./environments/prod/state.tfvars
 
-prod-plan:
+prod-plan: prod-init
 	terraform init 
 	terraform plan -var-file=./environments/prod/main.tfvars -var token=$(token)
 
