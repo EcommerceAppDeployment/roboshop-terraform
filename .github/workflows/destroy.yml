@@ -1,8 +1,8 @@
-name: Apply
+name: Destroy
 on:
   #push:
   #  branches:
-  #   - main # Triggers on pushes to the 'main' branch
+  #    - main # Triggers on pushes to the 'main' branch
   workflow_dispatch: # triggers manual workflow
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
       - name: terraform apply
         env:
           VAULT_TOKEN: ${{ secrets.VAULT_TOKEN }}
-        run: make dev-apply token=$VAULT_TOKEN
+        run: make dev-destroy token=$VAULT_TOKEN
           # Example: Install Node.js dependencies
 
       - name: Run tests
