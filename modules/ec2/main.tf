@@ -32,7 +32,7 @@ resource "aws_route53_record" "private_record" {
 }
 
 # Create a null resource to trigger the ansible configuration for tools only
-resource "null_resource" "ansible" {
+resource "null_resource" "ansible_tool" {
   depends_on  = [aws_route53_record.public_record, aws_route53_record.private_record ]
   count       = var.env=="tool" ? 1 : 0
   triggers = {
