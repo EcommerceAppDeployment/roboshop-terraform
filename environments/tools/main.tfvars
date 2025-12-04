@@ -1,4 +1,5 @@
-ami         = "ami-09c813fb71547fc4f"
+ami         = "ami-0ec3cf33a6aaacd53"
+#ami         = "ami-00b4d312883eab224"
 zone_id     = "Z08786032W2NWXT9UW4JD"
 tools       = {
     vault_p = {
