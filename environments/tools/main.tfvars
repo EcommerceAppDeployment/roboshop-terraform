@@ -6,10 +6,10 @@ tools       = {
         volume_size   = 20
         iam_policy    = []
     }
-    github_runner = {
-        instance_type = "t2.micro"
-        volume_size   = 20
-        iam_policy    = ["*"]
-    }
+    #github_runner = {
+    #    instance_type = "t2.micro"
+    #    volume_size   = 20
+    #    iam_policy    = ["*"]
+    #}
 }
  

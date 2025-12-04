@@ -62,8 +62,8 @@ resource "null_resource" "ansible" {
   provisioner "remote-exec" {
     connection {
       type        = "ssh"
-      user        = "ec2-user" #data.vault_generic_secret.ssh-creds.data["USER"]
-      password    = "DevOps321" #data.vault_generic_secret.ssh-creds.data["PASSWORD"]
+      user        = "ec2-user" 
+      password    = "DevOps321" 
       host        = aws_instance.my_ec2_instance.private_ip
     }
     inline = [
