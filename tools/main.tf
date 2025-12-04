@@ -8,6 +8,6 @@ module "tools" {
     volume_size     = each.value["volume_size"]
     env             = var.env
     iam_policy      = each.value["iam_policy"]
-    token           = var.token
+   
 }
 
