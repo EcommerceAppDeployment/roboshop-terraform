@@ -53,3 +53,22 @@ resource "null_resource" "ansible_tool" {
 }
 
 # Create a null resource to trigger the ansible configuration for databases
+resource "null_resource" "ansible" {
+  depends_on  = [aws_route53_record.public_record, aws_route53_record.private_record ]
+  count       = var.env=="tool" ? 0 : 1
+  triggers = {
+    always_run = timestamp()
+  }
+  provisioner "remote-exec" {
+    connection {
+      type        = "ssh"
+      user        = "ec2-user" 
+      password    = "DevOps321" 
+      host        = aws_instance.my_ec2_instance.private_ip
+    }
+    inline = [
+      "ansible-pull -i localhost, -U https://github.com/EcommerceAppDeployment/roboshop-ansible playbook.yml -e role=${var.name} -e env=${var.env}  | sudo tee /opt/ansible.log"
+    ]
+  }
+}
+
