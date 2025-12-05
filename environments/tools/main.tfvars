@@ -6,10 +6,20 @@ tools       = {
         volume_size   = 20
         iam_policy    = []
     }
-    #github_runner = {
-    #    instance_type = "t2.micro"
-    #    volume_size   = 20
-    #    iam_policy    = ["*"]
-    #}
+    github_runner = {
+        instance_type = "t2.micro"
+        volume_size   = 20
+        iam_policy    = ["*"]
+    }
 }
  
+ecr         = {
+    default = {
+        frontend    = "IMMUTABLE"
+        cart        = "IMMUTABLE"
+        catalogue   = "IMMUTABLE"
+        payment     = "IMMUTABLE"
+        user        = "IMMUTABLE"
+        shipping    = "IMMUTABLE"
+    }
+}

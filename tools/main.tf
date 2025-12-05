@@ -8,6 +8,11 @@ module "tools" {
     volume_size     = each.value["volume_size"]
     env             = var.env
     iam_policy      = each.value["iam_policy"]
-   
+    token           = var.token
 }
 
+resource "aws_ecr_repository" "main" {
+    for_each            = var.ecr
+    name                = each.key
+    image_tag_mutability= each.value
+}
